@@ -1,0 +1,15 @@
+[Unit]
+Description=Web Film Lokal (Node.js tanpa dependensi)
+After=network.target
+
+[Service]
+Type=simple
+User=x220
+WorkingDirectory=/home/x220/projects/film
+Environment=HOST=127.0.0.1 PORT=3000 BASE_PATH=/film
+ExecStart=/home/x220/.local/bin/node server.js
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
