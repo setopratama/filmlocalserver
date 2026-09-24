@@ -247,20 +247,21 @@ main.watch { background: var(--black); max-width: 1200px; }
   background: transparent; color: var(--text-secondary); font-size: 1.1rem; cursor: pointer;
 }
 .mm-close:hover { background: var(--surface-hover); color: var(--text); }
-.mrow { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin-bottom: .75rem; }
-.mrow input[type="password"] {
-  width: 100px; padding: .5rem .6rem; border-radius: 4px; border: 1px solid var(--line);
-  background: var(--surface-2); color: var(--text);
-}
-.mrow input[type="text"] {
-  flex: 1; min-width: 160px; padding: .5rem .6rem; border-radius: 4px; border: 1px solid var(--line);
-  background: var(--surface-2); color: var(--text);
-}
-.mrow button {
-  padding: .5rem .9rem; border: 0; border-radius: 4px; cursor: pointer;
+.mrow { display: flex; flex-wrap: wrap; align-items: center; margin-bottom: .75rem; }
+.mrow.compress input[type="password"] { width: 100px; }
+.mrow.compress button { width: 100px; }
+.mrow.rename .mrow-row { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.mrow.rename .mrow-row input[type="hidden"] { display: none; }
+.mrow.rename .mrow-row input[type="text"] { flex: 2 1 160px; min-width: 160px; }
+.mrow.rename .mrow-row input[type="password"] { flex: 0 1 100px; width: 100px; }
+.mrow.rename .mrow-row button { flex: 0 1 auto; }
+.mrow.delete .mrow-row { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.mrow.delete .mrow-row input[type="hidden"] { display: none; }
+.mrow.delete .mrow-row input[type="password"] { flex: 0 1 100px; width: 100px; }
+.mrow.delete .mrow-row button { flex: 0 1 auto; }
+.mrow button { padding: .5rem .9rem; border: 0; border-radius: 4px; cursor: pointer;
   background: var(--surface-hover); color: #fff;
-  transition: background-color .25s ease;
-}
+  transition: background-color .25s ease; }
 .mrow button:hover { background: #333; }
 .mrow button.danger { background: var(--red-dark); }
 .mrow button.danger:hover { background: var(--red); }

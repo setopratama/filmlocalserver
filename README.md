@@ -1,16 +1,15 @@
 # 🎬 Film Lokal — Web Streaming Satu WiFi (Node.js Tanpa Dependensi)
 
 Website sederhana untuk **browse, streaming, dan upload koleksi film** yang
-tersimpan di mesin ini. Bisa dibuka dari **HP/TV di WiFi yang sama** —
-tanpa login, tanpa `npm install`, hanya modul bawaan Node.js.
+tersimpan di mesin ini. Bisa dibuka dari **HP/TV di WiFi yang sama** — tanpa
+login, tanpa `npm install`, hanya modul bawaan Node.js.
 
 Akses: `http://192.168.1.151/film` (via Nginx) atau
 `http://192.168.1.151:3000/film` (langsung).
 
 ## ✨ Fitur
 
-- **Beranda ala streaming** — hero billboard + rel horizontal + kartu 16:9
-  (lihat `DESIGN.md` untuk spesifikasi UI).
+- **Beranda ala streaming** — hero billboard + rel horizontal + kartu 16:9.
 - **Player + streaming seek** — HTTP Range (`206 Partial Content`), bisa
   digeser di HP/TV. Format: MP4, MKV, WebM, AVI, MOV, M4V
   (sarankan MP4 H.264 + AAC untuk kompatibilitas HP).
@@ -22,7 +21,6 @@ Akses: `http://192.168.1.151/film` (via Nginx) atau
   kompres manual, rename file, hapus permanen.
 - **Metadata otomatis** — durasi (ffprobe) + thumbnail (ffmpeg) terisi
   sendiri setelah upload/scan.
-- **Tanpa login** — database SQLite hanya menyimpan metadata film.
 
 ## 🚀 Cara menjalankan
 
@@ -54,8 +52,9 @@ sudo bash scripts/setup.sh
 
 ## 🗂️ Struktur
 
-```
+```text
 film/
+├── AGENTS.md            # panduan operasional + aturan mesin
 ├── server.js            # SATU file app (http + fs + node:sqlite saja)
 ├── schema.sql           # skema SQLite
 ├── scripts/scan.js      # scan media/ -> database
@@ -65,8 +64,7 @@ film/
 ├── public/style.css     # CSS murni, tanpa framework
 ├── media/               # taruh video di sini
 ├── posters/             # thumbnail generate/otomatis
-├── AGENTS.md            # panduan operasional + aturan mesin
-└── DESIGN.md            # spesifikasi UI
+└── films.db             # database SQLite (JANGAN di-commit)
 ```
 
 `films.db`, file video, dan poster hasil generate **tidak di-commit**
@@ -77,10 +75,5 @@ film/
 Di server ini juga berjalan **Minecraft Bedrock** (UDP `19132/19133`).
 Web film memakai TCP `3000` + Nginx `:80` — jangan memakai/memblokir
 port Bedrock, dan kelola hanya via `film.service` terpisah.
+
 Detail lengkap: `AGENTS.md`.
-
-## 🛠️ Syarat sistem
-
-- Node.js `v22.x` (modul `node:sqlite` bawaan)
-- `ffmpeg` + `ffprobe` (durasi & thumbnail; opsional tapi disarankan)
-- Linux + (opsional) Nginx untuk akses tanpa port

@@ -107,14 +107,14 @@ function layout(title, body, mainClass) {
     + `<div class="manage-menu" id="manageMenu" role="dialog" aria-modal="true" aria-labelledby="mmTitle" hidden>`
     + `<div class="mm-head"><h3 id="mmTitle">Kelola</h3><button type="button" class="mm-close" aria-label="Tutup">✕</button></div>`
     + `<p class="meta mm-busy" hidden>⏳ Sedang dikompres — refresh halaman ini nanti.</p>`
-    + `<form method="post" action="${BASE_PATH}/compress" class="mrow mm-compress"><input type="hidden" name="id" value="">`
+    + `<form method="post" action="${BASE_PATH}/compress" class="mrow compress"><input type="hidden" name="id" value="">`
     + `<input type="password" name="pin" placeholder="PIN" aria-label="PIN" inputmode="numeric" autocomplete="off" required>`
     + `<button type="submit">Compress</button></form>`
-    + `<form method="post" action="${BASE_PATH}/rename" class="mrow"><input type="hidden" name="id" value="">`
+    + `<form method="post" action="${BASE_PATH}/rename" class="mrow rename"><input type="hidden" name="id" value="">`
     + `<input type="text" name="name" placeholder="Nama file baru" aria-label="Nama file baru" maxlength="200" required>`
     + `<input type="password" name="pin" placeholder="PIN" aria-label="PIN" inputmode="numeric" autocomplete="off" required>`
     + `<button type="submit">Rename</button></form>`
-    + `<form method="post" action="${BASE_PATH}/delete" class="mrow" onsubmit="return confirm('Hapus permanen? File video + data tidak bisa dikembalikan!')">`
+    + `<form method="post" action="${BASE_PATH}/delete" class="mrow delete" onsubmit="return confirm('Hapus permanen? File video + data tidak bisa dikembalikan!')">`
     + `<input type="hidden" name="id" value="">`
     + `<input type="password" name="pin" placeholder="PIN" aria-label="PIN" inputmode="numeric" autocomplete="off" required>`
     + `<button type="submit" class="danger">Delete</button></form></div>`
